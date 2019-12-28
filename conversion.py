@@ -47,8 +47,9 @@ def convert_json_to_ics(data):
                         vevent["description"] += "\r\n\r\n"
                     vevent["description"] += event["description"]
                 lang = languages.get(event["language"], event["language"])
-                vevent["categories"] = [
+                categories = [
                     event["track"], event["type"], lang]
+                vevent["categories"] = [category for category in categories if category]
     cal.get_event_by_id = lambda _id: id2event[_id]
     return cal
 
