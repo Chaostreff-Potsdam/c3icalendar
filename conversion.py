@@ -33,7 +33,17 @@ def convert_json_to_ics(data):
                 # set attributes
                 for a1, a2 in attr_mapping.items():
                     vevent[a1] = str(event[a2])
-                vevent["description"] = (event["abstract"] or "") + "\r\n\r\n" + (event["description"] or "")
+                if event["subtitle"]:
+                    if vevent["summary"]:
+                        vevent["summary"] += " - "
+                    vevent["summary"] += event["subtitle"]
+                vevent["description"] = ""
+                if event["abstract"]:
+                     vevent["description"] += event["abstract"]
+                if event["description"]:
+                    if vevent["description"]:
+                        vevent["description"] += "\r\n\r\n"
+                    vevent["description"] += event["description"]
     cal.get_event_by_id = lambda _id: id2event[_id]
     return cal
 

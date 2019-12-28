@@ -39,6 +39,14 @@ def test_all_events_are_included(cal, events):
     (10883, "SUMMARY", "Plundervolt: Flipping Bits from Software without Rowhammer"),
     (909  , "LOCATION", "DLF- und Podcast-B\u00fchne"),
     (598  , "location", "WikiPaka WG: Esszimmer"),
+    (1346 , "summary", "Mobile App Entwicklung f\u00fcr totale Anf\u00e4nger - Interaktive Live-Programmierung (also possible in English if desired)"),
+    (1346 , "DESCRIPTION", "Wir entwicklen gemeinsam eine kleine App f\u00fcr iPhones und Android Smartphones - und erkl\u00e4ren dabei jeden einzelnen Schritt (We'll develop a simple mobile app - and explain each and every step along the way)\nWir entwicklen gemeinsam eine kleine App f\u00fcr Android und iOS. Dabei erkl\u00e4re ich jeden einzelnen Schritt, lasse nichts aus, und programmiere so, wie man als Anf\u00e4nger programmiert - mit viel Online-Recherche - sodass du danach direkt deine eigene App entwickeln kannst. Die App, die wir gemeinsam entwickeln, kannst du am Ende der Session ganz einfach auf deinem eigenen Smartphone nutzen. Ich zeige dir wie!Ein Computer muss nicht mitgebracht werden. Es ist wohl sinnvoller, meiner Live-Programmierung ohne eigenen PC zu folgen, um dann gezielt fragen stellen zu k\u00f6nnen. Du kannst aber auch gerne deinen eigenen Laptop mitbringen, wenn du magst.Welche Werkzeuge werden wir nutzen?- Wir werden das beliebteste und meist verbreiteste Werkzeug zur Entwicklung moderner Apps f\u00fcr das iPhone und Android Smartphones nutzen. Es hei\u00dft \"React Native\". Au\u00dferdem nutzen wir \"Expo\", mit dem wir ganz schnell entwickeln und die App sehr leicht auf anderen Smartphones testen k\u00f6nnen.---------------English version:This workshop is advertised in German, but everyone is very welcome to attend! If you don't speak German, I'll switch to German in case it's fine for everyone or repeat the most important steps in English otherwise.A few words about this workshop in English: In this interactive session we'll develop a small mobile app for Android and iOS. We won't skip any step to make it accessible for complete beginners. I'll live code in the manner a beginner would do it - with browsing for solutions online - to give you a feel of how you really do mobile development ;-)In the end, you'll be able to use the app on your own smartphone. I'll teach you about a great tool which makes mobile development easy."),
+    (11223, "id", "11223"),
+    (11223, "id", "11223"),
+    (11223, "id", "11223"),
+    (11223, "id", "11223"),
+    (11223, "id", "11223"),
+    (11223, "id", "11223"),
 ])
 def test_events_have_attributes(cal, eid, attr, value):
     event = cal.get_event_by_id(eid)
