@@ -16,6 +16,8 @@ attr_mapping = {
     "summary": "title"
 }
 
+languages = {"de": "Deutsch", "en": "English"}
+
 def convert_json_to_ics(data):
     schedule = data["schedule"]
     conference = schedule["conference"]
@@ -44,6 +46,9 @@ def convert_json_to_ics(data):
                     if vevent["description"]:
                         vevent["description"] += "\r\n\r\n"
                     vevent["description"] += event["description"]
+                lang = languages.get(event["language"], event["language"])
+                vevent["categories"] = [
+                    event["track"], event["type"], lang]
     cal.get_event_by_id = lambda _id: id2event[_id]
     return cal
 
