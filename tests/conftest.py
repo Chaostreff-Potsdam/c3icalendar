@@ -3,19 +3,19 @@ import os
 import json
 import sys
 
-SOURCE_JSON_URL = "https://data.c3voc.de/36C3/everything.schedule.json"
-SOURCE_TEMP_PATH = "everything.schedule.json"
 HERE = os.path.dirname(__file__) or "."
 sys.path.append(os.path.join(HERE, ".."))
+
+# source from 
+# https://data.c3voc.de/36C3/everything.schedule.json
+SOURCE_TEMP_PATH = os.path.join(HERE, "everything.schedule.json")
+
 
 from conversion import convert_json_to_ics
 
 
 @fixture
 def data():
-    if not os.path.isfile(SOURCE_TEMP_PATH):
-        # from https://stackoverflow.com/a/7244263/1320237
-        urllib.request.urlretrieve(SOURCE_JSON_URL, SOURCE_TEMP_PATH)
     with open(SOURCE_TEMP_PATH) as file:
         return json.load(file)
 
@@ -48,4 +48,9 @@ def day3(conference):
 def day4(conference):
     return conference["days"][3]
 
+@fixture
+def events(conference):
+    return [event for day in conference["days"] 
+        for room in day["rooms"]
+        for event in day["rooms"][room]]
 

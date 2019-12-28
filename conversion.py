@@ -1,17 +1,37 @@
 #!/usr/bin/python3
 import os
-from icalendar import Calendar
+from icalendar import Calendar, Event
 import urllib.request
 
+HERE = os.path.dirname(__file__) or "."
+DEFAULT_CALENDAR_PATH = os.path.join(HERE, "default-calendar.ics")
+with open(DEFAULT_CALENDAR_PATH) as file:
+    DEFAULT_CALENDAR_CONTENT = file.read()
+
+attr_mapping = {
+    "uid": "guid",
+    "id" : "id",
+    "url": "url"
+}
 
 def convert_json_to_ics(data):
     schedule = data["schedule"]
     conference = schedule["conference"]
-    cal = Calendar()
-    cal["PRODID"] = "c3calendar"
-    cal["X-WR-TIMEZONE"] = "Europe/Berlin"
+    cal = Calendar.from_ical(DEFAULT_CALENDAR_CONTENT)
     cal["X-WR-CALNAME"] = conference["acronym"]
     cal["X-WR-CALDESC"] = conference["title"]
+    id2event = {}
+    for day in conference["days"]:
+        for room, events in day["rooms"].items():
+            for event in events:
+                # create event
+                vevent = Event()
+                cal.add_component(vevent)
+                id2event[event["id"]] = vevent
+                # set attributes
+                for a1, a2 in attr_mapping.items():
+                    vevent[a1] = str(event[a2])
+    cal.get_event_by_id = lambda _id: id2event[_id]
     return cal
 
 
