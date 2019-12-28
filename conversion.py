@@ -11,7 +11,9 @@ with open(DEFAULT_CALENDAR_PATH) as file:
 attr_mapping = {
     "uid": "guid",
     "id" : "id",
-    "url": "url"
+    "url": "url",
+    "location": "room",
+    "summary": "title"
 }
 
 def convert_json_to_ics(data):
@@ -31,6 +33,7 @@ def convert_json_to_ics(data):
                 # set attributes
                 for a1, a2 in attr_mapping.items():
                     vevent[a1] = str(event[a2])
+                vevent["description"] = (event["abstract"] or "") + "\r\n\r\n" + (event["description"] or "")
     cal.get_event_by_id = lambda _id: id2event[_id]
     return cal
 
