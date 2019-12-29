@@ -1,10 +1,12 @@
 c3icalendar
 ===========
 
-ICalendar adapter for the C3 schedule.
+ICalendar adapter for the [36C3 schedule].
 You can subscribe to the ICS file:
 
 > **https://c3icalendar.herokuapp.com/36c3.ics**
+
+[36C3 schedule]: https://events.ccc.de/congress/2019/wiki/index.php/Static:Schedule#Merged_schedules_.28XML_.2F_JSON.29
 
 Deployment
 ----------
