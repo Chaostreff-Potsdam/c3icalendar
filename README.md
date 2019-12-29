@@ -1,6 +1,8 @@
 c3icalendar
 ===========
 
+[![Build Status](https://travis-ci.org/Chaostreff-Potsdam/c3icalendar.svg?branch=master)](https://travis-ci.org/Chaostreff-Potsdam/c3icalendar)
+
 ICalendar adapter for the [36C3 schedule].
 You can subscribe to the ICS file:
 
