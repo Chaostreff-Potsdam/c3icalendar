@@ -25,7 +25,7 @@ cache = Cache(app, config={
     'CACHE_DIR': tempfile.mktemp(prefix="cache-")})
 
 def set_JS_headers(response):
-    repsonse = make_response(response)
+    response = make_response(response)
     response.headers['Access-Control-Allow-Origin'] = '*'
     # see https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSMissingAllowHeaderFromPreflight
     response.headers['Access-Control-Allow-Headers'] = request.headers.get("Access-Control-Request-Headers")
