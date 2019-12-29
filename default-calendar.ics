@@ -3,8 +3,9 @@ VERSION:2.0
 PRODID:c3calendar
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
-X-WR-CALNAME:WiLaP - machBar Events
 X-WR-TIMEZONE:Europe/Berlin
+X-SOURCE-CODE:https://github.com/Chaostreff-Potsdam/c3icalendar
+X-LICENSE:GNU Affero General Public License https://www.gnu.org/licenses/
 BEGIN:VTIMEZONE
 TZID:Europe/Berlin
 BEGIN:DAYLIGHT
