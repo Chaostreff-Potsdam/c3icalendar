@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import os
-from icalendar import Calendar, Event
+from icalendar import Calendar, Event, vDatetime
 import urllib.request
 import datetime
 import pytz
@@ -52,6 +52,10 @@ def convert_json_to_ics(data):
                 categories = [
                     event["track"], event["type"], lang, event["room"]]
                 vevent["categories"] = [category for category in categories if category]
+                start = parse_date(event["date"])
+                vevent["dtstart"] = vDatetime(start)
+                hours, minutes = tuple(map(int, event["duration"].split(":")))
+                vevent["dtend"] = vDatetime(start + datetime.timedelta(hours=hours, minutes=minutes))
     cal.get_event_by_id = lambda _id: id2event[_id]
     return cal
 

@@ -68,3 +68,14 @@ def test_parse_date_1():
     assert date.tzinfo.utcoffset(date) == datetime.timedelta(hours=1)
     assert date.tzinfo.tzname(date) == "CET"
 
+@pytest.mark.parametrize("eid,attr,value", [
+    (1378, "DTSTART", "2019-12-29T15:00:00+01:00"),
+    (1096, "DTSTART", "2019-12-29T20:00:00+01:00"),
+    (1096, "DTEND", "2019-12-29T22:30:00+01:00"),
+    (4128, "DTEND", "2019-12-28T13:30:00+01:00"),
+])
+def test_event_dates(cal, eid, attr, value):
+    expected_date = parse_date(value)
+    event = cal.get_event_by_id(eid)
+    event_date = event[attr].dt
+    assert event_date == expected_date
