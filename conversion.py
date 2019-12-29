@@ -2,6 +2,8 @@
 import os
 from icalendar import Calendar, Event
 import urllib.request
+import datetime
+import pytz
 
 HERE = os.path.dirname(__file__) or "."
 DEFAULT_CALENDAR_PATH = os.path.join(HERE, "default-calendar.ics")
@@ -48,10 +50,17 @@ def convert_json_to_ics(data):
                     vevent["description"] += event["description"]
                 lang = languages.get(event["language"], event["language"])
                 categories = [
-                    event["track"], event["type"], lang]
+                    event["track"], event["type"], lang, event["room"]]
                 vevent["categories"] = [category for category in categories if category]
     cal.get_event_by_id = lambda _id: id2event[_id]
     return cal
 
-
+def parse_date(s):
+    """parse a date from the JSON string to a datetime
+    
+        "2019-12-27T11:00:00+01:00"
+    """
+    s = s[:-3] + s[-2:] # remove : in time zone
+    dt = datetime.datetime.strptime(s, "%Y-%m-%dT%H:%M:%S%z")
+    return dt.astimezone(pytz.timezone("Europe/Berlin"))
 
