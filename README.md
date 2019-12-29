@@ -2,6 +2,9 @@ c3icalendar
 ===========
 
 ICalendar adapter for the C3 schedule.
+You can subscribe to the ICS file:
+
+> **https://c3icalendar.herokuapp.com/36c3.ics**
 
 Deployment
 ----------
