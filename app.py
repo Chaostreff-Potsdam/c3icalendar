@@ -39,6 +39,7 @@ def set_js_headers(func):
     return with_js_response
 
 @app.route("/36c3.ics", methods=['GET', 'OPTIONS'])
+@app.route("/36C3.ics", methods=['GET', 'OPTIONS'])
 # use query string in cache, see https://stackoverflow.com/a/47181782/1320237
 @cache.cached(timeout=CACHE_REQUESTED_URLS_FOR_SECONDS, query_string=True)
 @set_js_headers
