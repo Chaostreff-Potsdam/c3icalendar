@@ -26,6 +26,8 @@ def convert_json_to_ics(data):
     cal = Calendar.from_ical(DEFAULT_CALENDAR_CONTENT)
     cal["X-WR-CALNAME"] = conference["acronym"]
     cal["X-WR-CALDESC"] = conference["title"]
+    cal["X-VERSION"] = schedule["version"]
+    cal["X-BASE-URL"] = schedule["base_url"]
     id2event = {}
     for day in conference["days"]:
         for room, events in day["rooms"].items():

@@ -8,6 +8,8 @@ import datetime
     ("X-WR-TIMEZONE", "Europe/Berlin"),
     ("X-WR-CALNAME", "acronym"),
     ("X-WR-CALDESC", "title"),
+    ("X-VERSION", "hexdump; lounges 303; chaos-west 1.0; open-infra 15; wikipaka 0.13; chaoszone 0.7; komona 0.16; sendezentrum 2.7; lightning Europium; art-play 0.24; cdc 3; wiki 2019-12-27 21:20"),
+    ("X-BASE-URL", "https://fahrplan.events.ccc.de/congress/2019/Fahrplan/")
 ])
 def test_calendar_contains_meta_information(cal, conference, attr, value):
     assert cal.get(attr) == conference.get(value, value)
