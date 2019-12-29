@@ -18,15 +18,13 @@ def test_calendar_contains_meta_information(cal, conference, attr, value):
 def is_event(event):
     return event.name == "VEVENT"
 
-def test_opening_ceremony_is_first_event(cal, day1):
-    tested = False
+def test_opening_ceremony_included(cal, day1):
     for event in cal.walk():
         print(event.name)
         if is_event(event):
-            assert event["UID"] == day1["rooms"]["Ada"][0]["guid"]
-            tested = True
-            break
-    assert tested
+            if event["UID"] == day1["rooms"]["Ada"][0]["guid"]:
+                return
+    assert False, "opening ceremony not found"
 
 def test_there_are_many_events(events):
     assert len(events) > 30
