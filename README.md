@@ -21,6 +21,9 @@ There is a free plan.
 Heroku uses [gunicorn](http://flask.pocoo.org/docs/dev/deploying/wsgi-standalone/#gunicorn)
 to run the server, see the [Procfile](Procfile).
 
+Commits the the master branch first pass the Travis tests.
+After this, they are automatically deployed to heroku.
+@niccokunzmann manages c3icalendar.herokuapp.com.
 
 Software Components
 -------------------
