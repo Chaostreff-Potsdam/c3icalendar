@@ -19,6 +19,6 @@ python-dateutil==2.8.1    # via icalendar
 pytz==2019.3              # via icalendar
 requests==2.21.0
 six==1.13.0               # via python-dateutil
-urllib3==1.24.3           # via requests
+urllib3==1.26.5           # via requests
 werkzeug==0.16.0          # via flask
 
